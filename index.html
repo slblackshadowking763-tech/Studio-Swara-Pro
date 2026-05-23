@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STUDIOS SWARA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050505;
+color:#fff;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at top right,rgba(255,0,0,0.15),transparent 35%),
+radial-gradient(circle at bottom left,rgba(255,215,0,0.08),transparent 35%),
+radial-gradient(circle at center,rgba(0,255,100,0.06),transparent 40%);
+z-index:-1;
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(15px);
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:1.5rem;
+font-weight:700;
+color:#ffd700;
+letter-spacing:2px;
+text-shadow:0 0 15px rgba(255,215,0,0.6);
+}
+
+nav ul{
+display:flex;
+gap:28px;
+list-style:none;
+}
+
+nav ul li a{
+text-decoration:none;
+color:#fff;
+font-size:0.95rem;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#ffd700;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 8% 80px;
+background:
+linear-gradient(rgba(0,0,0,0.72),rgba(0,0,0,0.82)),
+url('shoven.png');
+background-size:cover;
+background-position:center;
+position:relative;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:160px;
+background:linear-gradient(to top,#050505,transparent);
+}
+
+.hero-content{
+max-width:950px;
+position:relative;
+z-index:2;
+}
+
+.hero-content h1{
+font-family:'Orbitron',sans-serif;
+font-size:5rem;
+line-height:1.1;
+margin-bottom:25px;
+background:linear-gradient(90deg,#ffd700,#ff3b3b,#00ff88);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 25px rgba(255,215,0,0.25);
+}
+
+.hero-content p{
+font-size:1.15rem;
+line-height:1.8;
+color:#d8d8d8;
+max-width:800px;
+margin:auto;
+}
+
+.hero-buttons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 34px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:0.4s;
+}
+
+.primary-btn{
+background:linear-gradient(90deg,#ff0000,#ffd700);
+color:#000;
+box-shadow:0 0 25px rgba(255,0,0,0.4);
+}
+
+.secondary-btn{
+border:1px solid rgba(255,255,255,0.2);
+color:#fff;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(10px);
+}
+
+.btn:hover{
+transform:translateY(-5px) scale(1.03);
+}
+
+section{
+padding:100px 8%;
+}
+
+.section-title{
+font-size:2.8rem;
+text-align:center;
+margin-bottom:20px;
+font-family:'Orbitron',sans-serif;
+color:#ffd700;
+}
+
+.section-sub{
+text-align:center;
+max-width:750px;
+margin:0 auto 60px;
+color:#cfcfcf;
+line-height:1.8;
+}
+
+.about-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+align-items:center;
+}
+
+.about-card{
+background:rgba(255,255,255,0.04);
+padding:40px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+box-shadow:0 0 35px rgba(0,0,0,0.35);
+}
+
+.about-card h3{
+margin-bottom:20px;
+color:#ffd700;
+font-size:1.5rem;
+}
+
+.about-card p{
+line-height:1.9;
+color:#d8d8d8;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.service-card{
+background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+padding:35px;
+border-radius:28px;
+position:relative;
+overflow:hidden;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.service-card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,rgba(255,0,0,0.18),transparent,rgba(255,215,0,0.12));
+opacity:0;
+transition:0.4s;
+}
+
+.service-card:hover::before{
+opacity:1;
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 35px rgba(255,215,0,0.15);
+}
+
+.service-card i{
+font-size:2.3rem;
+margin-bottom:20px;
+color:#ffd700;
+}
+
+.service-card h3{
+margin-bottom:15px;
+font-size:1.4rem;
+}
+
+.price{
+margin-top:20px;
+font-size:2rem;
+font-weight:700;
+color:#00ff88;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.video-box{
+background:#0c0c0c;
+padding:15px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.4s;
+}
+
+.video-box:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(255,0,0,0.18);
+}
+
+.video-box iframe{
+width:100%;
+height:220px;
+border:none;
+border-radius:18px;
+}
+
+.video-box h4{
+margin-top:15px;
+color:#ffd700;
+}
+
+.location-box iframe{
+width:100%;
+height:450px;
+border:none;
+border-radius:30px;
+box-shadow:0 0 35px rgba(255,215,0,0.08);
+}
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.contact-card{
+background:rgba(255,255,255,0.04);
+padding:35px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact-card h3{
+margin-bottom:20px;
+color:#ffd700;
+}
+
+.contact-card p,
+.contact-card a{
+line-height:2;
+color:#d8d8d8;
+text-decoration:none;
+}
+
+.socials{
+display:flex;
+gap:18px;
+margin-top:20px;
+}
+
+.socials a{
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.06);
+color:#fff;
+font-size:1.2rem;
+transition:0.4s;
+}
+
+.socials a:hover{
+background:#ffd700;
+color:#000;
+transform:translateY(-5px);
+}
+
+footer{
+padding:35px;
+text-align:center;
+border-top:1px solid rgba(255,255,255,0.08);
+color:#aaa;
+background:#070707;
+}
+
+.float-btn{
+position:fixed;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1.6rem;
+color:#fff;
+text-decoration:none;
+z-index:999;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.whatsapp{
+bottom:20px;
+background:#25d366;
+}
+
+.call{
+bottom:95px;
+background:#ff3b3b;
+}
+
+@media(max-width:900px){
+.hero-content h1{
+font-size:3rem;
+}
+
+nav ul{
+display:none;
+}
+}
+.equalizer{
+display:flex;
+justify-content:center;
+align-items:flex-end;
+gap:8px;
+height:80px;
+margin-top:40px;
+}
+
+.equalizer span{
+width:10px;
+border-radius:20px;
+background:linear-gradient(to top,#ff0000,#ffd700,#00ff88);
+animation:equalize 1s infinite ease-in-out;
+box-shadow:0 0 15px rgba(255,215,0,0.4);
+}
+
+.equalizer span:nth-child(1){height:25px; animation-delay:0s;}
+.equalizer span:nth-child(2){height:50px; animation-delay:0.2s;}
+.equalizer span:nth-child(3){height:70px; animation-delay:0.4s;}
+.equalizer span:nth-child(4){height:40px; animation-delay:0.1s;}
+.equalizer span:nth-child(5){height:75px; animation-delay:0.5s;}
+.equalizer span:nth-child(6){height:35px; animation-delay:0.3s;}
+.equalizer span:nth-child(7){height:60px; animation-delay:0.6s;}
+.equalizer span:nth-child(8){height:30px; animation-delay:0.2s;}
+
+@keyframes equalize{
+0%,100%{transform:scaleY(0.5); opacity:0.6;}
+50%{transform:scaleY(1.4); opacity:1;}
+}
+
+.mouse-glow{
+position:fixed;
+width:250px;
+height:250px;
+background:radial-gradient(circle,rgba(255,215,0,0.12),transparent 70%);
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:-1;
+}
+
+.stats-section{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-top:60px;
+}
+
+.stat-card{
+background:rgba(255,255,255,0.04);
+padding:35px;
+border-radius:25px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+transition:0.4s;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(255,215,0,0.15);
+}
+
+.stat-card h2{
+font-size:2.8rem;
+color:#ffd700;
+margin-bottom:10px;
+}
+
+.testimonials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+margin-top:50px;
+}
+
+.testimonial-card{
+background:rgba(255,255,255,0.04);
+padding:35px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+transition:0.4s;
+}
+
+.testimonial-card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(255,0,0,0.18);
+}
+
+.testimonial-card .stars{
+color:#ffd700;
+margin-bottom:15px;
+font-size:1.1rem;
+}
+
+.testimonial-card h4{
+margin-top:20px;
+color:#00ff88;
+}
+
+</style>
+</head>
+<body>
+
+<div class="mouse-glow" id="glow"></div>
+
+<nav>
+<div class="logo">STUDIOS SWARA</div>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#works">Works</a></li>
+<li><a href="#location">Location</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<h1>STUDIOS SWARA</h1>
+<p>
+Professional Music Recording Studio delivering cinematic sound production, cover song creation, voice enhancement, mixing, mastering, and premium audio experiences.
+</p>
+
+<div class="hero-buttons">
+<a href="#contact" class="btn primary-btn">Contact Now</a>
+<a href="#works" class="btn secondary-btn">Listen Our Works</a>
+</div>
+<div class="equalizer">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</section>
+
+<section id="about">
+<h2 class="section-title">About Our Studio</h2>
+<p class="section-sub">
+STUDIOS SWARA is a premium music recording and audio production studio dedicated to creating professional-quality music experiences for singers, artists, and content creators. Our studio specializes in voice recording, cinematic cover song production, vocal enhancement, mixing, mastering, and original music creation.
+<br><br>
+We combine modern sound engineering technology with creative musical artistry to produce emotionally powerful and crystal-clear audio. Whether you are an upcoming artist, a passionate singer, or someone who wants studio-quality music, STUDIOS SWARA provides a professional environment designed to bring your musical vision to life.
+<br><br>
+Our goal is to deliver industry-style sound quality with creativity, emotion, and attention to detail. From smooth vocal tuning to cinematic audio mixing, we focus on making every project unique, professional, and unforgettable.
+</p>
+
+<div class="about-grid">
+<div class="about-card">
+<h3>Professional Sound Production</h3>
+<p>
+From emotional cover songs to original music productions, our studio combines modern engineering techniques with artistic creativity to deliver clean, powerful, and industry-style audio quality.
+</p>
+</div>
+
+<div class="about-card">
+<h3>Creative Music Experience</h3>
+<p>
+We create immersive music experiences with advanced vocal enhancement, balanced mixing, and detailed mastering to bring every song to life with clarity and emotion.
+</p>
+</div>
+</div>
+</section>
+
+<section id="services">
+<h2 class="section-title">Services & Pricing</h2>
+<p class="section-sub">
+Professional music studio services for singers, creators, and artists.
+</p>
+
+<div class="services">
+<div class="service-card">
+<i class="fa-solid fa-microphone-lines"></i>
+<h3>Voice Recording</h3>
+<p>Voice enhancement and professional mixing with track.</p>
+<div class="price">Rs.2000</div>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-compact-disc"></i>
+<h3>Cover Song Production</h3>
+<p>High-quality cinematic cover song recording and production.</p>
+<div class="price">Rs.5000</div>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-music"></i>
+<h3>New Song Production</h3>
+<p>Complete original song production with studio-quality sound.</p>
+<div class="price">Rs.7000+</div>
+</div>
+</div>
+</section>
+
+<section id="works">
+<h2 class="section-title">Featured Music Works</h2>
+<p class="section-sub">
+Explore our latest music productions and cover songs.
+</p>
+
+<div class="gallery">
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/bLhhbDTdM-g" allowfullscreen></iframe>
+<h4>Sansara Sihinaye</h4>
+</div>
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/s462cE9mvag" allowfullscreen></iframe>
+<h4>Thaththa Cover</h4>
+</div>
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/wWhCtnlildE" allowfullscreen></iframe>
+<h4>Paputhurin Cover</h4>
+</div>
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/JSRDhymcS8M" allowfullscreen></iframe>
+<h4>Malata Suwada See</h4>
+</div>
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/XlbVJIWpN_E" allowfullscreen></iframe>
+<h4>Ehema Beluwama</h4>
+</div>
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/_06jhY0HMfU" allowfullscreen></iframe>
+<h4>Dewaduthiyak</h4>
+</div>
+</div>
+<div class="stats-section">
+<div class="stat-card">
+<h2>100+</h2>
+<p>Songs Produced</p>
+</div>
+
+<div class="stat-card">
+<h2>50+</h2>
+<p>Happy Clients</p>
+</div>
+
+<div class="stat-card">
+<h2>5★</h2>
+<p>Studio Quality</p>
+</div>
+
+<div class="stat-card">
+<h2>24/7</h2>
+<p>Creative Support</p>
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<h2 class="section-title">Artist Testimonials</h2>
+<p class="section-sub">
+What artists and clients say about STUDIOS SWARA.
+</p>
+
+<div class="testimonials">
+<div class="testimonial-card">
+<div class="stars">★★★★★</div>
+<p>
+Amazing recording quality and professional mixing. The final sound was cinematic and clean.
+</p>
+<h4>— Studio Client</h4>
+</div>
+
+<div class="testimonial-card">
+<div class="stars">★★★★★</div>
+<p>
+One of the best music studio experiences. Friendly environment with premium audio quality.
+</p>
+<h4>— Cover Artist</h4>
+</div>
+
+<div class="testimonial-card">
+<div class="stars">★★★★★</div>
+<p>
+Professional vocal enhancement and mastering. Highly recommended for singers and creators.
+</p>
+<h4>— Music Creator</h4>
+</div>
+</div>
+</section>
+
+<section id="location">
+<h2 class="section-title">Studio Location</h2>
+<p class="section-sub">
+Visit our professional music recording studio.
+</p>
+
+<div class="location-box">
+<iframe src="https://maps.google.com/maps?q=STUDIOS%20SWARA%20Sri%20Lanka&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+
+<div style="text-align:center; margin-top:25px;">
+<a href="https://maps.app.goo.gl/mmbq6iSfrfu4khvU9?g_st=aw" target="_blank" style="display:inline-block; padding:16px 35px; border-radius:50px; text-decoration:none; background:linear-gradient(90deg,#ff0000,#ffd700); color:#000; font-weight:700; box-shadow:0 0 25px rgba(255,215,0,0.25); transition:0.4s;">
+<i class="fa-solid fa-location-dot"></i> Open Studio Location in Google Maps
+</a>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Contact Us</h2>
+<p class="section-sub">
+Connect with STUDIOS SWARA for bookings and collaborations.
+</p>
+
+<div class="contact-grid">
+<div class="contact-card">
+<h3>Studio Information</h3>
+<p><i class="fa-solid fa-user"></i> Owner: Kaweesha Neeraj</p>
+<p><i class="fa-solid fa-phone"></i> +94761962608</p>
+<p><i class="fa-brands fa-whatsapp"></i> WhatsApp Available</p>
+</div>
+
+<div class="contact-card">
+<h3>Follow Us</h3>
+<p><a href="https://www.facebook.com/share/16apZBdDNa/">Facebook Page</a></p>
+<p><a href="https://www.instagram.com/studios_swara12?igsh=YzljYTk1ODg3Zg==">Instagram Profile</a></p>
+<p><a href="https://whatsapp.com/channel/0029VbBhHqoAzNc4ODsHm21u">WhatsApp Channel</a></p>
+
+<div class="socials">
+<a href="https://www.facebook.com/share/16apZBdDNa/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/studios_swara12?igsh=YzljYTk1ODg3Zg==" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/94761962608" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://www.youtube.com/@STUDIOSSWARA" target="_blank"><i class="fab fa-youtube"></i></a>
+</div>
+
+<div style="margin-top:30px; display:grid; gap:15px;">
+<a href="https://www.facebook.com/share/16apZBdDNa/" target="_blank" style="text-decoration:none; background:linear-gradient(90deg,#1877f2,#0d5fd3); padding:16px 20px; border-radius:18px; color:white; font-weight:600; display:flex; align-items:center; gap:15px; transition:0.4s;">
+<i class="fab fa-facebook-f" style="font-size:1.4rem;"></i>
+<span>Follow Our Facebook Page</span>
+</a>
+
+<a href="https://www.instagram.com/studios_swara12?igsh=YzljYTk1ODg3Zg==" target="_blank" style="text-decoration:none; background:linear-gradient(90deg,#ff0066,#ff9900); padding:16px 20px; border-radius:18px; color:white; font-weight:600; display:flex; align-items:center; gap:15px; transition:0.4s;">
+<i class="fab fa-instagram" style="font-size:1.4rem;"></i>
+<span>Follow Our Instagram</span>
+</a>
+
+<a href="https://www.youtube.com/@STUDIOSSWARA" target="_blank" style="text-decoration:none; background:linear-gradient(90deg,#ff0000,#b30000); padding:16px 20px; border-radius:18px; color:white; font-weight:600; display:flex; align-items:center; gap:15px; transition:0.4s;">
+<i class="fab fa-youtube" style="font-size:1.4rem;"></i>
+<span>Watch Our YouTube Channel</span>
+</a>
+
+<a href="https://wa.me/94761962608" target="_blank" style="text-decoration:none; background:linear-gradient(90deg,#25d366,#128c7e); padding:16px 20px; border-radius:18px; color:white; font-weight:600; display:flex; align-items:center; gap:15px; transition:0.4s;">
+<i class="fab fa-whatsapp" style="font-size:1.4rem;"></i>
+<span>Chat on WhatsApp</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 STUDIOS SWARA — Premium Music Recording Studio</p>
+</footer>
+
+<a href="tel:+94761962608" class="float-btn call">
+<i class="fa-solid fa-phone"></i>
+</a>
+
+<a href="https://wa.me/94761962608" class="float-btn whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+const glow=document.getElementById('glow');
+
+document.addEventListener('mousemove',(e)=>{
+glow.style.left=e.clientX+'px';
+glow.style.top=e.clientY+'px';
+});
+</script>
+
+</body>
+</html>
